@@ -8,6 +8,7 @@ There's a few steps you'll need to take in order to be able to use the app, but 
 
 ### Requirements
 - Windows 10 or later
+- [.NET 6.0 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0/runtime)
 - An existent computer
 - An internet connection that can access Discord
 
@@ -35,7 +36,7 @@ Where:
 
 `guildId` Is the ID of the server where you wish to upload the emojis to. (Your bot must be present in this server)
 
-`token` Is the token for your bot. (If you followed the guide above, you coped and noted down your token. Put it in between the quotes.)
+`token` Is the token for your bot. (If you followed the guide above, you copied and noted down your token. Put it in between the quotes.)
 
 ### 3. Run the bot
 Double-click the executable. If everything went right, you should see an icon in the tray and no error message displayed. Congrats! You're ready to go.
