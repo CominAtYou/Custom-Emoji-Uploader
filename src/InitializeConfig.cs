@@ -16,7 +16,6 @@ namespace Program {
         public static void initialize() {
             String workingDirectory = Path.GetDirectoryName(Application.ExecutablePath);
 
-
             if (!File.Exists(@$"{workingDirectory}\customemojiuploader-config.json")) {
                 new ToastContentBuilder()
                     .AddText("Unable to Find Config File")

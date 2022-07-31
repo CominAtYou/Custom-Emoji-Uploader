@@ -3,11 +3,15 @@
 
 using Microsoft.Toolkit.Uwp.Notifications;
 using System.Reflection;
-using System.Diagnostics;
 
 namespace Program {
     class Program {
         static void Main(string[] args) {
+            if (args.Contains("--unregisternotifications")) {
+                ToastNotificationManagerCompat.Uninstall();
+                return;
+            }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
@@ -46,7 +50,7 @@ namespace Program {
 
             trayIcon.ContextMenuStrip = new ContextMenuStrip(); // Create  a context menu
 
-            trayIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem("Version 1.0.0", null, null, "version"));
+            trayIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem("Version 1.1.0", null, null, "version"));
             trayIcon.ContextMenuStrip.Items[0].Enabled = false;
 
             trayIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem("Icon from Twemoji", null, null, "attribution")); // Attribution for Twemoji icon

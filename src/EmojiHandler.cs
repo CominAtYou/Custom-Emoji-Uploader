@@ -1,4 +1,5 @@
 ﻿#pragma warning disable CS8600
+#pragma warning disable CS8604
 
 using Discord;
 using Discord.WebSocket;
@@ -7,11 +8,12 @@ using System.Text.RegularExpressions;
 
 namespace Program {
     class EmojiHandler {
-        private DiscordSocketClient client;
+        private DiscordSocketClient client = new DiscordSocketClient();
         private readonly FileSystemWatcher watcher = new FileSystemWatcher(Config.PATH);
-        public EmojiHandler() {
-            client = new DiscordSocketClient();
+        private readonly string[] validExtensions = { ".png", ".webp", ".jpg", ".jpeg", ".gif" };
+        private List<string> inProgressFiles = new List<string>();
 
+        public EmojiHandler() {
             client.Ready += () => {
                 Console.WriteLine($"Logged in as {client.CurrentUser}");
                 return Task.CompletedTask;
@@ -37,49 +39,64 @@ namespace Program {
         public void createWatcher() {
             watcher.EnableRaisingEvents = true;
             watcher.NotifyFilter = NotifyFilters.Attributes |
+                NotifyFilters.FileName |
                 NotifyFilters.CreationTime |
                 NotifyFilters.FileName |
-                NotifyFilters.LastAccess |
-                NotifyFilters.LastWrite |
-                NotifyFilters.Size;
+                NotifyFilters.LastWrite;
 
             watcher.Created += async (sender, args) => {
+                if (inProgressFiles.Contains(args.FullPath)) return;
+                inProgressFiles.Add(args.FullPath);
+
                 await createEmoji(args.FullPath);
             };
         }
 
-        private async Task createEmoji(string path) {
-            string filenameWithExtension = Path.GetFileName(path);
+        public async Task createEmoji(string path) {
+            Console.WriteLine(path);
+            FileInfo file = new FileInfo(path);
             string name = Path.GetFileNameWithoutExtension(path);
-            string extension = Path.GetExtension(path).ToLower();
             Regex exp = new Regex("^([A-Za-z0-9]*[A-Za-z]){3,32}[A-Za-z0-9]*$");
 
-            if (extension != ".png" && extension != ".jpg" && extension != ".jpeg" && extension != ".webp" && extension != ".gif") { // The best I can do
+            inProgressFiles.Add(file.Name.ToLower());
+
+            /*
+                Some people may save images from their web browser directly into the folder.
+                Chrome downloads them as .crdownload files, then renames them to the correct name once completed.
+                Firefox creates two files - one, the actual file with a zero-byte size, and a .part file
+                that the data gets downloaded into and then copied into the zero-byte file.
+                If these kinds of files are detected, don't do anything.
+            */
+            if (file.Extension == ".crdownload" || file.Extension == ".part") return;
+            await Task.Delay(300); // This is needed for some reason. I don't know why. It just is.
+
+            if (!validExtensions.Contains(file.Extension)) { // The best I can do
                 new ToastContentBuilder()
                     .AddText("Unable to Create Emoji")
-                    .AddText($"{filenameWithExtension} is not an image file.")
+                    .AddText($"{file.Name} is not an image file.")
                 .Show();
+                inProgressFiles.Remove(path);
                 return;
             }
-
 
             if (!exp.IsMatch(name)) {
                 new ToastContentBuilder()
                     .AddText("Unable to Create Emoji")
-                    .AddText($"The name provided for {filenameWithExtension} is invalid. Enter a new name to try again.")
+                    .AddText($"The name provided for {file.Name} is invalid. Enter a new name to try again.")
                     .AddInputTextBox("newname", "New name")
                     .AddButton(new ToastButton()
                         .SetContent("Submit")
                         .SetTextBoxId("newname")
                         .AddArgument("action", "rename"))
                 .Show();
+                inProgressFiles.Remove(path);
 
                 ToastNotificationManagerCompat.OnActivated += async (e) => {
                     ToastArguments toastArgs = ToastArguments.Parse(e.Argument);
-                    string directory = Path.GetDirectoryName(path);
+                    string directory = file.DirectoryName;
 
                     if (toastArgs["action"] == "rename") {
-                        string newFilePath = directory + @"\" + e.UserInput.First().Value + extension;
+                        string newFilePath = directory + @"\" + e.UserInput.First().Value + file.Extension;
                         System.IO.File.Move(path, newFilePath);
 
                         await createEmoji(newFilePath);
@@ -100,6 +117,7 @@ namespace Program {
                     .AddText("Unable to Create Emoji")
                     .AddText($"Something happened while trying to create the emoji '{name}'.")
                 .Show();
+                inProgressFiles.Remove(path);
                 return;
             }
 
@@ -108,6 +126,8 @@ namespace Program {
                 .AddText($":{name}: has been added to {guild.Name}")
                 .AddInlineImage(new Uri(path))
             .Show();
+
+            inProgressFiles.Remove(path);
         }
     }
 }
