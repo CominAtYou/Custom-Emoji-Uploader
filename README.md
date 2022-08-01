@@ -60,4 +60,4 @@ You can turn them off in Windows Settings, under the "Notifications" option.
 ## Attribution
 The icon for the executable and tray icon is from the [Twemoji](https://twemoji.twitter.com) project and is licensed under CC-BY 4.0.
 
-This program uses the [Windows Community Toolkit](https://github.com/CommunityToolkit/WindowsCommunityToolkit), [Discord.NET](https://github.com/discord-net/Discord.Net), and [Newtonsoft JSON](https://www.newtonsoft.com/json), which are all licensed under the [MIT](https://licenses.nuget.org/MIT) license.
+This program uses the [Windows Community Toolkit](https://github.com/CommunityToolkit/WindowsCommunityToolkit) and [Newtonsoft JSON](https://www.newtonsoft.com/json), which are both licensed under the [MIT](https://licenses.nuget.org/MIT) license.
