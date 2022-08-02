@@ -41,7 +41,7 @@ namespace Program {
                 new ToastContentBuilder()
                     .AddText("Invalid Guild ID")
                     .AddText($"The Guild ID provided in the config is not valid. Either the ID is incorrect, or the bot is not in that guild. Double check the ID, then try again.")
-                    .AddButton("Edit Config", ToastActivationType.Protocol, new Uri(@$"{Path.GetDirectoryName(Application.ExecutablePath)}\customemojiuploader-config.json").ToString())
+                    .AddButton("Edit config", ToastActivationType.Protocol, new Uri(@$"{Path.GetDirectoryName(Application.ExecutablePath)}\customemojiuploader-config.json").ToString())
                 .Show();
                 Environment.Exit(1);
             }
@@ -61,7 +61,7 @@ namespace Program {
 
             trayIcon.ContextMenuStrip = new ContextMenuStrip(); // Create  a context menu
 
-            trayIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem("Version 1.2.0", null, null, "version"));
+            trayIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem("Version 1.2.1", null, null, "version"));
             trayIcon.ContextMenuStrip.Items[0].Enabled = false;
 
             trayIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem("Icon from Twemoji", null, null, "attribution")); // Attribution for Twemoji icon

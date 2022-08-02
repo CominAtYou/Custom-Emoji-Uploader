@@ -11,8 +11,8 @@ namespace Program {
         private static readonly ToastContentBuilder incompleteConfigNotification = new ToastContentBuilder()
             .AddText("Invalid Config")
             .AddText("Your config file is incomplete or missing some items. Please make sure everything has been specified and is complete.")
-            .AddButton("More Info", ToastActivationType.Protocol, "https://github.com/CominAtYou/Custom-Emoji-Uploader/blob/master/README.md#2-config-file")
-            .AddButton("Edit Config", ToastActivationType.Protocol, new Uri(@$"{Path.GetDirectoryName(Application.ExecutablePath)}\customemojiuploader-config.json").ToString());
+            .AddButton("More info", ToastActivationType.Protocol, "https://github.com/CominAtYou/Custom-Emoji-Uploader/blob/master/README.md#2-config-file")
+            .AddButton("Edit config", ToastActivationType.Protocol, new Uri(@$"{Path.GetDirectoryName(Application.ExecutablePath)}\customemojiuploader-config.json").ToString());
 
         public static void initialize() {
             String workingDirectory = Path.GetDirectoryName(Application.ExecutablePath);
@@ -21,7 +21,7 @@ namespace Program {
                 new ToastContentBuilder()
                     .AddText("Unable to Find Config File")
                     .AddText("We couldn't find the config file. Please make sure that it's in the same folder as the app.")
-                    .AddButton("More Info", ToastActivationType.Protocol, "https://github.com/CominAtYou/Custom-Emoji-Uploader/blob/master/README.md#2-config-file")
+                    .AddButton("More info", ToastActivationType.Protocol, "https://github.com/CominAtYou/Custom-Emoji-Uploader/blob/master/README.md#2-config-file")
                 .Show();
                 Environment.Exit(1);
             }
