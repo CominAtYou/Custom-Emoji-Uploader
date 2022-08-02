@@ -61,16 +61,18 @@ namespace Program {
 
             new ToastContentBuilder()
                 .AddText("Emoji Created")
-                .AddText($":{name}: has been added to {((string) (await Guild.getGuildFromApi())["name"])}.")
+                .AddText($":{name}: has been added to {(await Guild.getGuildFromApi())["name"]}.")
                 .AddInlineImage(new Uri(file.FullName))
             .Show();
         }
 
         private static async void rateLimitComplete(Task _t) {
             Interlocked.Exchange(ref rateLimit, UPLOAD_RATE_LIMIT);
-            for (int i = queue.Count - 1; i >= 0 ; i--) {
-                await upload(queue[i]);
-                queue.RemoveAt(i);
+            List<FileInfo> queuedItems = new List<FileInfo>(queue); // Copy for thread safety
+
+            for (int i = 0; i < queuedItems.Count; i++) {
+                await upload(queuedItems[i]);
+                queue.RemoveAt(0); // 0, not i - The uploaded item will always be at the beginning of the list
             }
         }
     }
