@@ -8,7 +8,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>resources/icon.ico</ApplicationIcon>
-    <Version>1.2.1</Version>
+    <Version>1.2.2</Version>
     <Authors>CominAtYou</Authors>
     <Product>Custom Emoji Uploader</Product>
     <PublishSingleFile>true</PublishSingleFile>

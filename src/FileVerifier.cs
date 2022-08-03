@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 namespace Program {
     class FileVerifier {
         private static readonly string[] validExtensions = { ".png", ".webp", ".jpg", ".jpeg", ".gif" };
-        private static readonly Regex exp = new Regex("^([A-Za-z0-9]*[A-Za-z]){3,32}[A-Za-z0-9]*$");
+        private static readonly Regex exp = new Regex("^[A-Za-z0-9_]{3,32}$");
         public static async Task verify(FileInfo file) {
             /*
                 Some people may save images from their web browser directly into the folder.
