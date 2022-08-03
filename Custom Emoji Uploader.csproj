@@ -8,7 +8,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>resources/icon.ico</ApplicationIcon>
-    <Version>1.2.2</Version>
+    <Version>1.3.0</Version>
     <Authors>CominAtYou</Authors>
     <Product>Custom Emoji Uploader</Product>
     <PublishSingleFile>true</PublishSingleFile>
@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="resources/icon.ico" />
+    <EmbeddedResource Include="resources/trayicon.ico" />
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.2" />
     <PackageReference Include="newtonsoft.json" Version="13.0.1" />
   </ItemGroup>
