@@ -3,6 +3,13 @@ Drop an image into a folder, and have it uploaded to Discord as a custom emoji.
 
 https://user-images.githubusercontent.com/35669235/181942405-c413a035-1df2-45a1-8c06-c6356d315cad.mp4
 
+## What It Does
+Uploading emojis to Discord can be a hassle. You've gotta download the emoji, fumble through some folders to find the right server, and then get to the emoji page in server settings, and browse through the file upload window to find the image.
+
+This app aim to simplify this process into one step. Download or copy an image into a designated folder, and you're done. If something goes wrong, the app will give you a heads up and offer some steps to help.
+
+It's incredibly light and fast, and works with every image type Discord supports, which currently consists of PNG, JPEG, and GIF images.
+
 ## Getting Started
 There's a few steps you'll need to take in order to be able to use the app, but they're quite simple. They're listed below.
 
@@ -13,8 +20,6 @@ There's a few steps you'll need to take in order to be able to use the app, but 
 - An internet connection that can access Discord
 
 First, download the executable from the [releases](https://github.com/CominAtYou/Custom-Emoji-Uploader/releases/latest) page, and save it to wherever you want - preferably somewhere where it won't be accidentally deleted.
-
-
 
 ### 1. Create a Discord bot
 This app uses a Discord bot to upload emojis to your server, as that is the only way Discord permits programs to upload emojis. If you don't know how to create and add a bot to a server, follow [this guide](https://gist.github.com/CominAtYou/f2bdb20f36799914474dc270a19553bd). If you do already know, create a bot, add it to the server you want, and then jump to [step 2](#2-config-file).
