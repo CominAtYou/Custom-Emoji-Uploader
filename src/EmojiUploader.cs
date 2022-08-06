@@ -61,7 +61,7 @@ namespace Program {
 
             new ToastContentBuilder()
                 .AddText("Emoji Created")
-                .AddText($":{name}: has been added to {(await Guild.getGuildFromApi())["name"]}.")
+                .AddText($":{name}: has been added to {guild["name"]}.")
                 .AddInlineImage(new Uri(file.FullName))
             .Show();
         }
