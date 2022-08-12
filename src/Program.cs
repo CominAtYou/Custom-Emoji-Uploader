@@ -22,8 +22,8 @@ namespace Program {
     public class CustomEmojiUploader : ApplicationContext {
         private NotifyIcon trayIcon = new NotifyIcon();
         public CustomEmojiUploader() {
-            RunOnStartup.runOnStartup();
             InitializeConfig.initialize();
+            RunOnStartup.runOnStartup();
 
             bool validWatcherPath = Directory.Exists(Config.PATH);
             if (!validWatcherPath) {

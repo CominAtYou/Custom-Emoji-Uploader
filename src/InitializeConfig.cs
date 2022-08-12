@@ -27,7 +27,7 @@ namespace Program {
             }
 
             string jsonString = File.ReadAllText(@$"{workingDirectory}\customemojiuploader-config.json");
-            JObject json;
+            JObject json = null;
 
             try {
                 json = JObject.Parse(jsonString);
@@ -35,7 +35,6 @@ namespace Program {
             catch {
                 incompleteConfigNotification.Show();
                 Environment.Exit(1);
-                return; // The app will not compile without this.
             }
 
             if (!json.ContainsKey("token") || !json.ContainsKey("guildId") || !json.ContainsKey("emojiFolderPath") || json["token"].Type != JTokenType.String || json["guildId"].Type != JTokenType.Integer || json["emojiFolderPath"].Type != JTokenType.String) {
