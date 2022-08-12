@@ -49,7 +49,7 @@ Double-click the executable. If everything went right, you should see an icon in
 ## Building
 1. Install .NET 6 SDK
 2. Clone the repo
-3. Install the necessary packages if they aren't already present: `dotnet add package Microsoft.Toolkit.Uwp.Notifications && dotnet add package Discord.NET && dotnet add package Newtonsoft.Json`
+3. Install the necessary packages if they aren't already present: `dotnet add package Microsoft.Toolkit.Uwp.Notifications && dotnet add package Newtonsoft.Json`
 4. Run `dotnet publish`
 5. Find the outputted executable in `./bin/Debug/net6.0-windows10.0.22000.0/win-x64/publish`
 ## Frequently Asked Questions
