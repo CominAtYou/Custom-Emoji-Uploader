@@ -61,7 +61,7 @@ namespace Program {
 
             trayIcon.ContextMenuStrip = new ContextMenuStrip(); // Create  a context menu
 
-            trayIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem("Version 1.3.0", null, null, "version"));
+            trayIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem("Version 1.3.1", null, null, "version"));
             trayIcon.ContextMenuStrip.Items[0].Enabled = false;
 
             trayIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem("Icon from Twemoji", null, null, "attribution")); // Attribution for Twemoji icon
