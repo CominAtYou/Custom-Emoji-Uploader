@@ -71,7 +71,7 @@ namespace Program {
             List<FileInfo> queuedItems = new List<FileInfo>(queue); // Copy for thread safety
 
             for (int i = 0; i < queuedItems.Count; i++) {
-                await upload(queuedItems[i]);
+                await upload(queuedItems[0]);
                 queue.RemoveAt(0); // 0, not i - The uploaded item will always be at the beginning of the list
             }
         }
