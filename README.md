@@ -6,7 +6,7 @@ https://user-images.githubusercontent.com/35669235/181942405-c413a035-1df2-45a1-
 ## What It Does
 Uploading emojis to Discord can be a hassle. You've gotta download the emoji, fumble through some folders to find the right server, and then get to the emoji page in server settings, and browse through the file upload window to find the image.
 
-This app aim to simplify this process into one step. Download or copy an image into a designated folder, and you're done. If something goes wrong, the app will give you a heads up and offer some steps to help.
+This app aims to simplify this process into one step. Download or copy an image into a designated folder, and you're done. If something goes wrong, the app will give you a heads up and offer some steps to help.
 
 It's incredibly light and fast, and works with every image type Discord supports, which currently consists of PNG, JPEG, and GIF images.
 
