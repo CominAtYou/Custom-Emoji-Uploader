@@ -29,6 +29,14 @@ namespace Program {
                 throw new Exception("File is not an image file");
             }
 
+            if ((file.Extension == ".gif" && file.Length > 10240 || file.Length > 256000)) {
+                new ToastContentBuilder()
+                    .AddText("Unable to Create Emoji")
+                    .AddText($"{file.Name} is too large. The maximum allowed size is 10.24 MB for GIFs, and 256 KB for all other image types.")
+                .Show();
+                throw new Exception("File is too large");
+            }
+
             if (!exp.IsMatch(Path.GetFileNameWithoutExtension(file.FullName))) {
                 new ToastContentBuilder()
                     .AddText("Unable to Create Emoji")
